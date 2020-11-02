@@ -1,0 +1,47 @@
+.planetInfo {
+  display: flex;
+  justify-content: space-around;
+}
+
+.planetInfo > p {
+  padding: 10px;
+  border: 1px solid #ffe301;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  border-radius: 10px;
+  justify-content: space-around;
+}
+
+p > span {
+  font-weight: bold;
+}
+
+.planetInfo_container h1,
+.planetInfo_container h2 {
+  text-align: center;
+  color: #ffe301;
+  font-family: 'Star Jedi';
+}
+
+.resident {
+  text-align: center;
+  color: white;
+}
+
+.planetInfo_container a {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ffe301;
+  border-radius: 10px;
+  background-color: black;
+}
+
+.planetInfo_container a:hover {
+  background-color: #33333369;
+}

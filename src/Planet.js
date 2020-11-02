@@ -15,9 +15,13 @@ function Planet({ planet }) {
       }}
     >
       <div className="planet_container">
-        <h3>{planet.name}</h3>
-        <p>Condition: {planet.climate}</p>
-        <p>Population: {formatPopulation}</p>
+        <h2>{planet.name}</h2>
+        <p>
+          <b>Condition:</b> {planet.climate}
+        </p>
+        <p>
+          <b>Population:</b> {formatPopulation}
+        </p>
       </div>
     </Link>
   );

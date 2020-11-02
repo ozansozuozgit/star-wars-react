@@ -1,12 +1,21 @@
 .planet_container {
-  border: 1px solid black;
+  border: 1px solid #82898e;
+  border-radius: 15px;
   width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #c8c8c8;
+  background-color: black;
+  padding: 10px;
 }
 
 .planet_container:hover {
   cursor: pointer;
+  box-shadow: 1px 1px 10px #c7254e;
+}
+
+.planet_container > h2 {
+  color: #ffe301;
 }

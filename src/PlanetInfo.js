@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './PlanetInfo.css';
 import { useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
+import Spinner from './Spinner';
 
 function PlanetInfo() {
   const location = useLocation();
   const planet = location.state.planet;
   const [planetResidents, setPlanetResidents] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const {
     name,
@@ -34,8 +36,9 @@ function PlanetInfo() {
         }
       }
       setPlanetResidents(results);
+      setLoading(false);
     }
-    
+
     fetchResidents();
   }, [residents]);
 
@@ -44,18 +47,48 @@ function PlanetInfo() {
       <Link to="/" className="btn btn-light">
         Back To Search
       </Link>
-      <h1>Planet:{name}</h1>
-      <p>Rotation Period:{rotation_period}</p>
-      <p>Diameter: {diameter}</p>
-      <p>Climate: {climate}</p>
-      <p>Gravity:{gravity}</p>
-      <p>Terrain:{terrain}</p>
-      <p>Population:{population}</p>
-      <h2>Famous Residents:</h2>
-      {planetResidents.length !== 0 ? (
-        planetResidents.map((resident) => <p>{resident.name}</p>)
+      <h1>{name}</h1>
+      <div className="planetInfo">
+        <p>
+          <span>Rotation Period</span>
+          {rotation_period}
+        </p>
+        <p>
+          <span>Diameter</span>
+          {diameter}
+        </p>
+        <p>
+          <span>Climate</span>
+          {climate}
+        </p>
+        <p>
+          <span>Gravity</span>
+          {gravity}
+        </p>
+        <p>
+          <span>Terrain</span>
+          {terrain}
+        </p>
+        <p>
+          <span>Population</span>
+          {population}
+        </p>
+      </div>
+      <h2>Famous Residents</h2>
+      {loading ? (
+        <Spinner />
       ) : (
-        <p>No Famous Residents</p>
+        <div className="resident_container">
+          {planetResidents.length !== 0 ? (
+            planetResidents.map((resident, index) => (
+              <p className="resident" key={index}>
+                {resident.name}
+              </p>
+            ))
+          ) : (
+            <p style={{ color: 'red' }}>No Famous Residents</p>
+          )}
+        </div>
       )}
     </div>
   );

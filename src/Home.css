@@ -1,3 +1,10 @@
+.home_container {
+  text-align: center;
+}
+.home_container > h1 {
+  color: #ffe301;
+  font-family: 'Star Jedi';
+}
 .planet_list_container {
   display: grid;
   width: 70%;
@@ -6,6 +13,11 @@
   gap: 1rem;
   justify-items: center;
 }
+
+.planet_list_container > a {
+  text-decoration: none;
+}
+
 
 @media (max-width: 900px) {
   .planet_list_container {
