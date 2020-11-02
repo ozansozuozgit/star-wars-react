@@ -45,3 +45,10 @@ p > span {
 .planetInfo_container a:hover {
   background-color: #33333369;
 }
+
+@media (max-width: 680px) {
+  .planetInfo {
+    flex-direction: column;
+    align-items: center;
+  }
+}

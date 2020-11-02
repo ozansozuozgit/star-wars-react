@@ -23,7 +23,12 @@ function Home() {
           break;
         }
       }
-      setPlanets(results);
+
+      //Filter unknown planets
+      const filteredPlanets = results.filter(
+        (result) => result.name !== 'unknown'
+      );
+      setPlanets(filteredPlanets);
     }
     fetchData();
   }, []);

@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './Spinner.css';
 
 const Spinner = () => {
   return (
-    <div className='spinner'>
+    <div className="spinner">
       <div class="lds-hourglass"></div>
     </div>
   );

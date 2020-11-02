@@ -1,7 +1,7 @@
 .planet_container {
   border: 1px solid #82898e;
   border-radius: 15px;
-  width: 300px;
+  width: 280px;
   display: flex;
   flex-direction: column;
   justify-content: center;
