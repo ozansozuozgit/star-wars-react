@@ -1,0 +1,14 @@
+.planet_list_container {
+  display: grid;
+  width: 70%;
+  margin: 3rem auto;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+
+@media (max-width: 900px) {
+  .planet_list_container {
+    width: 100%;
+  }
+}

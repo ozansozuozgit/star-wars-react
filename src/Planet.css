@@ -1,0 +1,12 @@
+.planet_container {
+  border: 1px solid black;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.planet_container:hover {
+  cursor: pointer;
+}
