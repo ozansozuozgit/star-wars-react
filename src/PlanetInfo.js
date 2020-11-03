@@ -86,7 +86,9 @@ function PlanetInfo() {
               </p>
             ))
           ) : (
-            <p style={{ color: 'red' }}>No Famous Residents</p>
+            <p style={{ color: 'red', textAlign: 'center' }}>
+              No Famous Residents
+            </p>
           )}
         </div>
       )}

@@ -9,11 +9,13 @@
   color: #c8c8c8;
   background-color: black;
   padding: 10px;
+  transition: transform 500ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
 .planet_container:hover {
   cursor: pointer;
   box-shadow: 1px 1px 10px #c7254e;
+  transform: scale(1.2);
 }
 
 .planet_container > h2 {
