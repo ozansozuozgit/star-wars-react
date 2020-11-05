@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './PlanetInfo.css';
 import { useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 import Spinner from './Spinner';
+import PlanetContext from './context/Planet/planetContext';
 
 function PlanetInfo() {
-  const location = useLocation();
-  const planet = location.state.planet;
   const [planetResidents, setPlanetResidents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const planetContext = useContext(PlanetContext);
+
+  const { currentPlanet } = planetContext;
 
   const {
     name,
@@ -19,7 +21,7 @@ function PlanetInfo() {
     terrain,
     population,
     residents,
-  } = planet;
+  } = currentPlanet;
 
   useEffect(() => {
     async function fetchResidents() {

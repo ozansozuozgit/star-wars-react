@@ -37,7 +37,9 @@ function PlanetState(props) {
   };
 
   // Set current planet
-  const setCurrentPlanet = () => {};
+  const setCurrentPlanet = (planet) => {
+    dispatch({ type: SET_CURRENT_PLANET, payload: planet });
+  };
 
   // Get Famous Residents
   const getResidents = async () => {};
@@ -47,6 +49,7 @@ function PlanetState(props) {
       value={{
         planets: state.planets,
         residents: state.residents,
+        currentPlanet: state.currentPlanet,
         getPlanets,
         setCurrentPlanet,
         getResidents,
