@@ -24,12 +24,9 @@ function PlanetInfo() {
   useEffect(() => {
     async function fetchResidents() {
       let results = [];
-      for (let i = 0; i < residents.length; i++) {
-        let residentID = residents[i].match(/people\/(\d+)/)[1];
+      for (let resident of residents) {
         try {
-          const response = await axios.get(
-            `http://swapi.dev/api/people/${residentID}`
-          );
+          const response = await axios.get(resident);
           results = results.concat(response.data);
         } catch (error) {
           console.error(error);
