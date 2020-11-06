@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './PlanetInfo.css';
 import { Link } from 'react-router-dom';
 import Spinner from './Spinner';
@@ -12,7 +12,6 @@ function PlanetInfo() {
     loading,
     famousResidents,
   } = planetContext;
-  const [planet, setPlanet] = useState({});
 
   const {
     name,
@@ -27,6 +26,7 @@ function PlanetInfo() {
 
   useEffect(() => {
     getResidents(residents);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
