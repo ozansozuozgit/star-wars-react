@@ -9,6 +9,9 @@ export default (state, action) => {
     case SET_CURRENT_PLANET: {
       return { ...state, currentPlanet: action.payload };
     }
+    case GET_RESIDENTS: {
+      return { ...state, famousResidents: action.payload, loading: false };
+    }
     default:
       return state;
   }

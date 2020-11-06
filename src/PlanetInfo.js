@@ -1,16 +1,18 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import './PlanetInfo.css';
-import { useLocation, Link } from 'react-router-dom';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Spinner from './Spinner';
 import PlanetContext from './context/Planet/planetContext';
 
 function PlanetInfo() {
-  const [planetResidents, setPlanetResidents] = useState([]);
-  const [loading, setLoading] = useState(true);
   const planetContext = useContext(PlanetContext);
-
-  const { currentPlanet } = planetContext;
+  const {
+    currentPlanet,
+    getResidents,
+    loading,
+    famousResidents,
+  } = planetContext;
+  const [planet, setPlanet] = useState({});
 
   const {
     name,
@@ -24,22 +26,8 @@ function PlanetInfo() {
   } = currentPlanet;
 
   useEffect(() => {
-    async function fetchResidents() {
-      let results = [];
-      for (let resident of residents) {
-        try {
-          const response = await axios.get(resident);
-          results = results.concat(response.data);
-        } catch (error) {
-          console.error(error);
-        }
-      }
-      setPlanetResidents(results);
-      setLoading(false);
-    }
-
-    fetchResidents();
-  }, [residents]);
+    getResidents(residents);
+  }, []);
 
   return (
     <div className="planetInfo_container">
@@ -78,8 +66,8 @@ function PlanetInfo() {
         <Spinner />
       ) : (
         <div className="resident_container">
-          {planetResidents.length !== 0 ? (
-            planetResidents.map((resident, index) => (
+          {famousResidents?.length !== 0 ? (
+            famousResidents?.map((resident, index) => (
               <p className="resident" key={index}>
                 {resident.name}
               </p>

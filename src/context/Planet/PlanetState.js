@@ -7,8 +7,9 @@ import { GET_PLANETS, GET_RESIDENTS, SET_CURRENT_PLANET } from '../types';
 function PlanetState(props) {
   const initialState = {
     planets: [],
-    residents: [],
+    famousResidents: [],
     currentPlanet: {},
+    loading: true,
   };
 
   const [state, dispatch] = useReducer(planetReducer, initialState);
@@ -42,14 +43,26 @@ function PlanetState(props) {
   };
 
   // Get Famous Residents
-  const getResidents = async () => {};
+  const getResidents = async (residents) => {
+    let results = [];
+    for (let resident of residents) {
+      try {
+        const response = await axios.get(resident);
+        results = results.concat(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    dispatch({ type: GET_RESIDENTS, payload: results });
+  };
 
   return (
     <PlanetContext.Provider
       value={{
         planets: state.planets,
-        residents: state.residents,
         currentPlanet: state.currentPlanet,
+        famousResidents: state.famousResidents,
+        loading: state.loading,
         getPlanets,
         setCurrentPlanet,
         getResidents,
